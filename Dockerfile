@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-
+USER root 
 RUN cd /opt
 
 RUN mkdir android-sdk-linux && cd android-sdk-linux/
@@ -10,7 +10,10 @@ RUN apt-get update -qq \
   && apt-get install -y expect \
   && apt-get install -y zip \
   && apt-get install -y unzip \
+  && groupadd -g 999 docker \
+  && usermod -aG docker jenkins \
   && rm -rf /var/lib/apt/lists/*
+  
     
 RUN wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
 

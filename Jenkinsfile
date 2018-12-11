@@ -13,7 +13,7 @@ node {
 
         stage('Build Image') {
             // Build our docker Image
-            sh("sudo docker build -t ${project} .")
+            sh("docker build -t ${project} .")
         }
 
         stage('Deploy application') {
@@ -21,7 +21,7 @@ node {
             switch (env.BRANCH_NAME) {
                 case "master":
                     sh("env >> .env")
-                    sh("sudo docker run --env-file .env --rm ${project} ./gradlew clean build assembleDebug")                    
+                    sh("docker run --env-file .env --rm ${project} ./gradlew clean build assembleDebug")                    
                     sh("rm -rf .env")
                     break                
             }
