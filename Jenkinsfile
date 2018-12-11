@@ -1,8 +1,6 @@
 node {
     //Utilizing a try block so as to make the code cleaner and send slack notification in case of any error
-    try {
-        //Call function to send a message to Slack
-        notifyBuild('STARTED')
+    try {                
         // Global variable declaration
         def project = 'israel/android-teste'
         def appName = 'Sample App'
@@ -28,10 +26,7 @@ node {
                     break                
             }
         }
-    } catch (e) {
-        currentBuild.result = "FAILED"
-        throw e
-      } finally {
-        notifyBuild(currentBuild.result)
+    } catch (e) {        
+        throw e      
     }
 }
