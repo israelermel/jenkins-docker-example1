@@ -12,7 +12,9 @@ RUN apt-get update -qq \
   && apt-get install -y unzip \
   && groupadd -g 999 docker \
   && usermod -aG docker Jenkins \
+  && usermod -aG docker jenkins \
   && usermod -aG docker israelermel \
+  && sudo service docker start \
   && rm -rf /var/lib/apt/lists/*
   
     
