@@ -10,6 +10,7 @@ RUN mkdir "$ANDROID_HOME" .android \
 && curl -o sdk.zip $SDK_URL \
 && unzip sdk.zip \
 && rm sdk.zip \
+&& sudo usermod -a -G docker $USER \
 && yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
 # Install Android Build Tool and Libraries
 RUN $ANDROID_HOME/tools/bin/sdkmanager --update
